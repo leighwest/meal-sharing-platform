@@ -17,7 +17,7 @@ export default function MealsPage() {
         <Link href="meals/share">Share Your Favourite Recipe</Link>
       </p>
       <main className={classes.main}>
-        <MealsGrid meals {[]}/>
+        <MealsGrid meals={[]} />
       </main>
     </>
   );
