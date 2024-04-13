@@ -1,8 +1,12 @@
 import classes from '.page.module.css';
 import MealsGrid from '@/components/meals/meals-grid';
 import Link from 'next/link';
+import { getMeals } from '../lib/meals';
+import { MealItemType } from '@/components/meals/meal-item';
 
 export default function MealsPage() {
+  const meals: MealItemType[] = getMeals();
+
   return (
     <>
       <header className={classes.header}></header>
@@ -17,7 +21,7 @@ export default function MealsPage() {
         <Link href="meals/share">Share Your Favourite Recipe</Link>
       </p>
       <main className={classes.main}>
-        <MealsGrid meals={[]} />
+        <MealsGrid meals={meals} />
       </main>
     </>
   );

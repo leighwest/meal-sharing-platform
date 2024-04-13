@@ -1,7 +1,12 @@
-import MealItem, { MealItemProps } from './meal-item';
+import { MealItemType } from './meal-item';
+import MealItem from './meal-item';
 import classes from './meals-grid.module.css';
 
-export default function MealsGrid(meals: MealItemProps[]) {
+type MealsGridProps = {
+  meals: MealItemType[];
+};
+
+export default function MealsGrid({ meals }: MealsGridProps) {
   return (
     <ul className={classes.meals}>
       {meals.map((meal) => (
