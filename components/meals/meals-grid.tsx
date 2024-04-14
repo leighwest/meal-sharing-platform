@@ -6,7 +6,7 @@ type MealsGridProps = {
   meals: MealItemType[];
 };
 
-export default function MealsGrid({ meals }: MealsGridProps) {
+export default async function MealsGrid({ meals }: MealsGridProps) {
   return (
     <ul className={classes.meals}>
       {meals.map((meal) => (
