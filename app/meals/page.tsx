@@ -5,8 +5,8 @@ import { getMeals } from '../lib/meals';
 import { MealItemType } from '@/components/meals/meal-item';
 import { Suspense } from 'react';
 
-function Meals() {
-  const meals: MealItemType[] = getMeals();
+async function Meals() {
+  const meals: MealItemType[] = await getMeals();
 
   return <MealsGrid meals={meals} />;
 }
