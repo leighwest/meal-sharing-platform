@@ -8,3 +8,9 @@ export async function getMeals(): Promise<MealItemType[]> {
   // throw new Error();   put here to test that error.tsx works
   return db.prepare('SELECT * FROM meals').all() as MealItemType[];
 }
+
+export function getMeal(slug: string): MealItemType {
+  return db
+    .prepare('SELECT * FROM meals WHERE slug = ?')
+    .get(slug) as MealItemType;
+}

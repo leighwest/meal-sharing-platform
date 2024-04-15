@@ -7,9 +7,11 @@ export type MealItemType = {
   id: number;
   title: string;
   slug: string;
+  creator: string;
+  creator_email: string;
   image: string;
   summary: string;
-  creator: string;
+  instructions: string;
 };
 
 export default function MealItem({
