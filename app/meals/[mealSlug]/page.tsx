@@ -1,8 +1,9 @@
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
+import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
 
 import classes from './page.module.css';
 import { getMeal } from '@/app/lib/meals';
-import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
 
 type MealDetailsProps = {
   params: Params;
@@ -10,6 +11,10 @@ type MealDetailsProps = {
 
 export default function MealDetailsPage({ params }: MealDetailsProps) {
   const meal = getMeal(params.mealSlug);
+
+  if (!meal) {
+    notFound();
+  }
 
   meal.instructions = meal.instructions.replace(/\n/g, '<br />');
 
