@@ -22,7 +22,7 @@ export default function MealDetailsPage({ params }: Props) {
     <>
       <header className={classes.header}>
         <div className={classes.image}>
-          <Image fill src={meal.image} alt={meal.title} />
+          <Image fill src={meal.image as string} alt={meal.title} />
         </div>
         <div className={classes.headerText}>
           <h1>{meal.title}</h1>
