@@ -5,12 +5,12 @@ import { usePathname } from 'next/navigation';
 
 import classes from './nav-link.module.css';
 
-type NavLinkProps = {
+type Props = {
   href: string;
   children: React.ReactNode;
 };
 
-export default function NavLink({ href, children }: NavLinkProps) {
+export default function NavLink({ href, children }: Props) {
   const path = usePathname();
 
   return (

@@ -3,16 +3,7 @@ import Image from 'next/image';
 
 import classes from './meal-item.module.css';
 
-export type MealItemType = {
-  id: number;
-  title: string;
-  slug: string;
-  creator: string;
-  creator_email: string;
-  image: string;
-  summary: string;
-  instructions: string;
-};
+import { MealItemType } from './model/meal';
 
 export default function MealItem({
   title,
@@ -25,7 +16,7 @@ export default function MealItem({
     <article className={classes.meal}>
       <header>
         <div className={classes.image}>
-          <Image src={image} alt={title} fill />
+          <Image src={image as string} alt={title} fill />
         </div>
         <div className={classes.headerText}>
           <h2>{title}</h2>

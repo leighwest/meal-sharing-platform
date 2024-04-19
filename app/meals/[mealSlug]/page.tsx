@@ -5,11 +5,11 @@ import { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
 import classes from './page.module.css';
 import { getMeal } from '@/app/lib/meals';
 
-type MealDetailsProps = {
+type Props = {
   params: Params;
 };
 
-export default function MealDetailsPage({ params }: MealDetailsProps) {
+export default function MealDetailsPage({ params }: Props) {
   const meal = getMeal(params.mealSlug);
 
   if (!meal) {

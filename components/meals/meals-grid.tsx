@@ -1,12 +1,12 @@
-import { MealItemType } from './meal-item';
+import { MealItemType } from './model/meal';
 import MealItem from './meal-item';
 import classes from './meals-grid.module.css';
 
-type MealsGridProps = {
+type Props = {
   meals: MealItemType[];
 };
 
-export default async function MealsGrid({ meals }: MealsGridProps) {
+export default async function MealsGrid({ meals }: Props) {
   return (
     <ul className={classes.meals}>
       {meals.map((meal) => (
