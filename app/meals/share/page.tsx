@@ -1,10 +1,26 @@
+'use client';
+
 import ImagePicker from '@/components/meals/image-picker';
 import classes from './page.module.css';
-import { shareMeal } from '@/app/lib/action';
-import { useFormStatus } from 'react-dom';
+import { shareMeal } from '@/app/lib/actions';
 import MealsFormSubmit from '@/components/meals/meals-form-submit';
+import { useFormState } from 'react-dom';
 
 export default function ShareMealPage() {
+  /**
+   * useFormState takes two arguments: shareMeal - the action function to be called when the form is submitted,
+   * argument two: initial state object, which has a message property of type string or null
+   *
+   * When you call formAction() (dispatch function returned by useFormState) it invokes shareMeal() with the current
+   * state and the form data as arguments. shareMeal() will process data, perform validations and will either return
+   * an object with a message property if ther are any validation errors, or redirect to the /meals route if the form
+   * submission is successful.
+   */
+
+  const [state, formAction] = useFormState(shareMeal, {
+    message: null as string | null,
+  });
+
   return (
     <>
       <header className={classes.header}>
@@ -14,7 +30,7 @@ export default function ShareMealPage() {
         <p>Or any other meal you feel needs sharing!</p>
       </header>
       <main className={classes.main}>
-        <form className={classes.form} action={shareMeal}>
+        <form className={classes.form} action={formAction}>
           <div className={classes.row}>
             <p>
               <label htmlFor="name">Your name</label>
@@ -43,6 +59,7 @@ export default function ShareMealPage() {
             ></textarea>
           </p>
           <ImagePicker label="Your image" name="image" />
+          {state.message && <p>{state.message}</p>}
           <p className={classes.actions}>
             <MealsFormSubmit />
           </p>
