@@ -6,6 +6,7 @@ import { redirect } from 'next/navigation';
 
 import { saveMeal } from './meals';
 import { MealItemType } from '@/components/meals/model/meal';
+import { revalidatePath } from 'next/cache';
 
 function isInvalidFormValue(text: string) {
   return !text || text.trim() === '';
@@ -39,5 +40,8 @@ export async function shareMeal(
   }
 
   await saveMeal(meal);
+  revalidatePath('/meals');
+  // this will only refresh the cache of the page in /meals, equivalent to revalidate('/meals', 'page')
+  // if you want to revalidate nested pages too, then you use revalidate('/meals', 'layout')
   redirect('/meals');
 }
